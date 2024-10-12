@@ -59,7 +59,7 @@ user_input = st.text_input("ユーザー：")
 # 入力がある場合に処理を行う
 if user_input:
     if user_input == "終了":
-        st.write("チャットを終了します。")
+        st.write("チャットを終了します。　お疲れ様でした。")
     else:
         # チャット履歴に追加
         st.session_state.chat_history.append(f"ユーザー: {user_input}")
