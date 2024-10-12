@@ -59,19 +59,34 @@ st.title("「漢字しりとり」ボット")
 st.write("しりとりBot：私は「漢字しりとり」Botです！　しりとりをしましょう！　単語を入れてください！　※チャットを終了するには「終了」と入力してください。")
 st.write("----------------------")
 
-while True:
-    user_input = st.text_input("ユーザー：　")
+
+# 入力履歴を保存するためのリストを初期化
+chat_history = []
+
+# ユーザーの入力を取得
+user_input = st.text_input("ユーザー：")
+
+# 入力がある場合に処理を行う
+if user_input:
     if user_input == "終了":
         st.write("チャットを終了します。")
-        break
-    outa = llm.invoke(f"{user_input}の意味を高校生が分かるように簡単に説明してください。")
-    st.write(outa.content)
-    st.write("----------------------")
-    st.write("")
+    else:
+        chat_history.append(f"ユーザー: {user_input}")
+        st.write(f"ユーザー: {user_input}")
+        outa = llm.invoke(f"「{user_input}」の意味を高校生が分かるように簡単に説明してください。")
+        st.write(outa.content)
+        st.write("----------------------")
+        st.write("")
+        
+        bot_response = get_response(user_input)
+        st.write(f"しりとりbot: {bot_response}")
+        outb = llm.invoke(f"「{bot_response}」の意味を高校生が分かるように簡単に説明してください。")
+        st.write(outb.content)
+        st.write("----------------------")
+        st.write("")
 
-    bot_response = get_response(user_input)
-    st.write(f"しりとりbot: {bot_response}")
-    outb = llm.invoke(f"{bot_response}の意味を高校生が分かるように簡単に説明してください。")
-    st.write(outb.content)
-    st.write("----------------------")
-    st.write("")
+# チャット履歴を表示
+#for message in chat_history:
+#    st.write(message)
+
+
