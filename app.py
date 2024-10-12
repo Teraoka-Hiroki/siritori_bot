@@ -4,7 +4,7 @@ import os
 # Import the Python SDK
 import google.generativeai as genai
 # Used to securely store your API key
-from google.colab import userdata
+#from google.colab import userdata
 
 GOOGLE_API_KEY=userdata.get('GeminiAPI')
 # Call configure, but don't assign it to a variable since it returns None
