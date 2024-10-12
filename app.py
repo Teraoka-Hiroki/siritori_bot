@@ -17,7 +17,7 @@ GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 if GOOGLE_API_KEY is None:
     st.error("GOOGLE_API_KEY is not set. Please check your GitHub Secrets and Streamlit Cloud settings.")
 else:
-#    st.success("GOOGLE_API_KEY is successfully set!")
+    st.success("GOOGLE_API_KEY is successfully set!")
 
 
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -64,14 +64,14 @@ while True:
     if user_input == "終了":
         st.write("チャットを終了します。")
         break
-    outa = llm.invoke(f"「{user_input}」の意味を高校生が分かるように簡単に説明してください。")
+    outa = llm.invoke(f"{user_input}の意味を高校生が分かるように簡単に説明してください。")
     st.write(outa.content)
     st.write("----------------------")
     st.write("")
 
     bot_response = get_response(user_input)
     st.write(f"しりとりbot: {bot_response}")
-    outb = llm.invoke(f"「{bot_response}」の意味を高校生が分かるように簡単に説明してください。")
+    outb = llm.invoke(f"{bot_response}の意味を高校生が分かるように簡単に説明してください。")
     st.write(outb.content)
     st.write("----------------------")
     st.write("")
