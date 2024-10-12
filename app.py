@@ -67,23 +67,24 @@ chat_history = []
 user_input = st.text_input("ユーザー：")
 
 # 入力がある場合に処理を行う
-if user_input:
-    if user_input == "終了":
-        st.write("チャットを終了します。")
-    else:
-        chat_history.append(f"ユーザー: {user_input}")
-        st.write(f"ユーザー: {user_input}")
-        outa = llm.invoke(f"「{user_input}」の意味を高校生が分かるように簡単に説明してください。")
-        st.write(outa.content)
-        st.write("----------------------")
-        st.write("")
-        
-        bot_response = get_response(user_input)
-        st.write(f"しりとりbot: {bot_response}")
-        outb = llm.invoke(f"「{bot_response}」の意味を高校生が分かるように簡単に説明してください。")
-        st.write(outb.content)
-        st.write("----------------------")
-        st.write("")
+while True:
+    if user_input:
+        if user_input == "終了":
+            st.write("チャットを終了します。")
+        else:
+            chat_history.append(f"ユーザー: {user_input}")
+            st.write(f"ユーザー: {user_input}")
+            outa = llm.invoke(f"「{user_input}」の意味を高校生が分かるように簡単に説明してください。")
+            st.write(outa.content)
+            st.write("----------------------")
+            st.write("")
+            
+            bot_response = get_response(user_input)
+            st.write(f"しりとりbot: {bot_response}")
+            outb = llm.invoke(f"「{bot_response}」の意味を高校生が分かるように簡単に説明してください。")
+            st.write(outb.content)
+            st.write("----------------------")
+            st.write("")
 
 # チャット履歴を表示
 #for message in chat_history:
