@@ -6,7 +6,9 @@ import google.generativeai as genai
 # Used to securely store your API key
 #from google.colab import userdata
 
-from langchain_google_genai import Genai  # `Genai`モジュールは適切にインポートしてください
+#from langchain_google_genai import Genai  # `Genai`モジュールは適切にインポートしてください
+
+from langchain_google_genai.chat_models import ChatGoogleGenerativeAI  # モジュールをインポート
 
 # GitHub SecretsからAPIキーを取得
 GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
@@ -15,12 +17,11 @@ GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 if GOOGLE_API_KEY is None:
     st.error("GOOGLE_API_KEY is not set. Please check your GitHub Secrets.")
 else:
-    # Call configure, but don't assign it to a variable since it returns None
-    genai.configure(api_key=GOOGLE_API_KEY)
+    # ChatGoogleGenerativeAIを初期化
+    genai = ChatGoogleGenerativeAI(api_key=GOOGLE_API_KEY)
 
     # Assign the actual API key to the environment variable
     os.environ['GOOGLE_API_KEY'] = GOOGLE_API_KEY
-
 
 
 
