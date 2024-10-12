@@ -47,10 +47,6 @@ st.write("----------------------")
 if 'chat_history' not in st.session_state:
     st.session_state.chat_history = []
 
-# チャット履歴を表示
-for message in st.session_state.chat_history:
-    st.write(message)
-
 # ユーザーの入力を取得
 user_input = st.text_input("ユーザー：")
 
@@ -64,19 +60,21 @@ if user_input:
 
         # 入力を処理
         outa = llm.invoke(f"「{user_input}」の意味を高校生が分かるように簡単に説明してください。")
-        st.session_state.chat_history.append(f"意味: {outa.content}")
+        st.write(outa.content)
         st.write("----------------------")
         st.write("")
 
         bot_response = get_response(user_input)
         st.session_state.chat_history.append(f"しりとりbot: {bot_response}")
-
+        
         outb = llm.invoke(f"「{bot_response}」の意味を高校生が分かるように簡単に説明してください。")
-        st.session_state.chat_history.append(f"意味: {outb.content}")
+        st.write(outb.content)
         st.write("----------------------")
         st.write("")
 
-# 最新のチャット履歴を再表示
+# チャット履歴を表示
 for message in st.session_state.chat_history:
     st.write(message)
+# ユーザーの入力を取得
+user_input = st.text_input("ユーザー：")
 
