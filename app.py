@@ -1,5 +1,17 @@
 import streamlit as st
 
+import os
+# Import the Python SDK
+import google.generativeai as genai
+# Used to securely store your API key
+from google.colab import userdata
+
+GOOGLE_API_KEY=userdata.get('GeminiAPI')
+# Call configure, but don't assign it to a variable since it returns None
+genai.configure(api_key=GOOGLE_API_KEY)
+# Assign the actual API key to the environment variable
+os.environ['GOOGLE_API_KEY'] = GOOGLE_API_KEY
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 #llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0.7, top_p=0.85)
 llm = ChatGoogleGenerativeAI(model="gemini-pro", temperature=0.7, top_p=0.85)
