@@ -65,6 +65,7 @@ if user_input:
         st.write("")
 
         bot_response = get_response(user_input)
+        st.write("しりとりbot: ")
         st.write(bot_response)
         st.session_state.chat_history.append(f"しりとりbot: {bot_response}")
         
