@@ -54,7 +54,7 @@ messages = [
 def get_response(user_input):
 
     user_message = {"role": "user", "content": user_input}
-    lobal messages
+    global messages
     messages.append(user_message)
 
     # Use the `invoke` method with the entire message history
