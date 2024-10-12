@@ -10,7 +10,7 @@ GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 if GOOGLE_API_KEY is None:
     st.error("GOOGLE_API_KEY is not set. Please check your GitHub Secrets and Streamlit Cloud settings.")
 else:
-    st.success("GOOGLE_API_KEY is successfully set!")
+    st.success("Let's Go !!!")
 
 # ChatGoogleGenerativeAIを初期化
 llm = ChatGoogleGenerativeAI(model="gemini-pro", temperature=0.7, top_p=0.85)
@@ -41,6 +41,9 @@ def get_response(user_input):
 # メインの処理
 st.title("「漢字しりとり」ボット")
 st.write("しりとりBot：私は「漢字しりとり」Botです！ しりとりをしましょう！ 単語を入れてください！ ※チャットを終了するには「終了」と入力してください。")
+st.write("----------------------")
+st.write("モデル：Gemini-pro")
+st.write("レベル：高校生")
 st.write("----------------------")
 
 # チャット履歴をセッション状態で管理
@@ -78,7 +81,7 @@ if user_input:
         st.write("")
 
 # チャット履歴を表示
-st.write("これまでの履歴")
+st.write("ーーーーーこれまでの履歴ーーーーーー")
 for message in st.session_state.chat_history:
     st.write(message)
 
