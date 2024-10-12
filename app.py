@@ -24,10 +24,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 #llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0.7, top_p=0.85)
 llm = ChatGoogleGenerativeAI(model="gemini-pro", temperature=0.7, top_p=0.85)
 
-def get_response(user_input):
-
-    # System prompt is directly passed into the prompt now
-    prompt = f"""
+prompt = f"""
     このスレッドではしりとりをします。全ての質問に対しては以下のルールに厳格に従って答えてください。
     1. あなたは、「しりとりBOT」です。
     2. これは、漢字を使ったしりとりをおこなうゲームです。
@@ -44,12 +41,24 @@ def get_response(user_input):
       ・回答は10文字以内でおこなってください。
     6. 5のルール違反があった場合は違反をしたプレイヤーの負けとなります。「負けました」と表示してください。
     7．必ず回答してください。分からない場合は、「わかりません」と回答してください。
-
-    ユーザー: {user_input}
     """
 
+
+# ChatGPTのシステムに渡して
+messages = [
+    {"role": "system",
+     "content": system_prompt}
+]
+
+
+def get_response(user_input):
+
+    user_message = {"role": "user", "content": user_input}
+    lobal messages
+    messages.append(user_message)
+
     # Use the `invoke` method with the entire message history
-    response = llm.invoke(prompt)
+    response = llm.invoke(messages)
 
     return response.content
 
