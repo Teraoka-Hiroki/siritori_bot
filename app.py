@@ -65,6 +65,7 @@ if user_input:
         st.write("")
 
         bot_response = get_response(user_input)
+        st.write(bot_response)
         st.session_state.chat_history.append(f"しりとりbot: {bot_response}")
         
         outb = llm.invoke(f"「{bot_response}」の意味を高校生が分かるように簡単に説明してください。")
