@@ -76,5 +76,5 @@ if user_input:
 for message in st.session_state.chat_history:
     st.write(message)
 # ユーザーの入力を取得
-user_input = st.text_input("ユーザー：")
+#user_input = st.text_input("ユーザー：")
 
