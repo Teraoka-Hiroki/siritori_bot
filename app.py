@@ -47,10 +47,9 @@ st.write("----------------------")
 if 'chat_history' not in st.session_state:
     st.session_state.chat_history = []
 
-# チャット履歴を表示
-for message in st.session_state.chat_history:
-    st.write(message)
 
+st.write("")
+st.write("")
 # ユーザーの入力を取得
 user_input = st.text_input("ユーザー：")
 
@@ -82,6 +81,6 @@ if user_input:
 for message in st.session_state.chat_history:
     st.write(message)
 
-user_input = st.text_input("ユーザー：", key="user_input")
+
 
 
