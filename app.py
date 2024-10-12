@@ -64,10 +64,11 @@ st.write("----------------------")
 chat_history = []
 
 # ユーザーの入力を取得
-user_input = st.text_input("ユーザー：")
+#user_input = st.text_input("ユーザー：")
 
 # 入力がある場合に処理を行う
 while True:
+    user_input = st.text_input("ユーザー：")
     if user_input:
         if user_input == "終了":
             st.write("チャットを終了します。")
