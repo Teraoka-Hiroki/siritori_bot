@@ -9,7 +9,7 @@ import google.generativeai as genai
 #from langchain_google_genai import Genai  # `Genai`モジュールは適切にインポートしてください
 
 # GitHub SecretsからAPIキーを取得
-GOOGLE_API_KEY = os.getenv('GeminiAPI')
+GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 
 # `GOOGLE_API_KEY`がNoneかどうかをチェック
 if GOOGLE_API_KEY is None:
@@ -19,7 +19,7 @@ else:
     genai.configure(api_key=GOOGLE_API_KEY)
 
     # Assign the actual API key to the environment variable
-    os.environ['GeminiAPI'] = GOOGLE_API_KEY
+    os.environ['GOOGLE_API_KEY'] = GOOGLE_API_KEY
 
 
 
