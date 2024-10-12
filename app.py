@@ -47,7 +47,7 @@ prompt = f"""
 # ChatGPTのシステムに渡して
 messages = [
     {"role": "system",
-     "content": system_prompt}
+     "content": prompt}
 ]
 
 
