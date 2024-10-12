@@ -57,7 +57,6 @@ if user_input:
     else:
         # チャット履歴に追加
         st.session_state.chat_history.append(f"ユーザー: {user_input}")
-        st.write(f"ユーザー: {user_input}")
 
         # 入力を処理
         outa = llm.invoke(f"「{user_input}」の意味を高校生が分かるように簡単に説明してください。")
@@ -66,8 +65,8 @@ if user_input:
         st.write("")
 
         bot_response = get_response(user_input)
-        st.write(f"しりとりbot: {bot_response}")
-
+        st.session_state.chat_history.append(f"しりとりbot: {bot_response}")
+        
         outb = llm.invoke(f"「{bot_response}」の意味を高校生が分かるように簡単に説明してください。")
         st.write(outb.content)
         st.write("----------------------")
