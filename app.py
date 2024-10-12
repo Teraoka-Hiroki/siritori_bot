@@ -6,7 +6,7 @@ import google.generativeai as genai
 # Used to securely store your API key
 #from google.colab import userdata
 
-#from langchain_google_genai import Genai  # `Genai`モジュールは適切にインポートしてください
+from langchain_google_genai import Genai  # `Genai`モジュールは適切にインポートしてください
 
 # GitHub SecretsからAPIキーを取得
 GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
