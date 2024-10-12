@@ -7,22 +7,18 @@ import google.generativeai as genai
 #from google.colab import userdata
 
 #from langchain_google_genai import Genai  # `Genai`モジュールは適切にインポートしてください
-
+import os
+import streamlit as st
 
 # GitHub SecretsからAPIキーを取得
 GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 
 # `GOOGLE_API_KEY`がNoneかどうかをチェック
 if GOOGLE_API_KEY is None:
-    st.error("GOOGLE_API_KEY is not set. Please check your GitHub Secrets.")
+    st.error("GOOGLE_API_KEY is not set. Please check your GitHub Secrets and Streamlit Cloud settings.")
 else:
-    # ダミー関数でAPIキーの確認
-    def dummy_api_function(api_key):
-        return f"API key {api_key} is successfully retrieved."
+    st.success("GOOGLE_API_KEY is successfully set!")
 
-    # APIキーを使用してダミー関数を実行
-    api_key_status = dummy_api_function(GOOGLE_API_KEY)
-    st.write(api_key_status)
 
 
 
