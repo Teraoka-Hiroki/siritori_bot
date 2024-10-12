@@ -78,6 +78,7 @@ if user_input:
         st.write("")
 
 # チャット履歴を表示
+st.write("これまでの履歴")
 for message in st.session_state.chat_history:
     st.write(message)
 
