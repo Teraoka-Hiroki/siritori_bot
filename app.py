@@ -10,7 +10,7 @@ GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
 if GOOGLE_API_KEY is None:
     st.error("GOOGLE_API_KEY is not set. Please check your GitHub Secrets and Streamlit Cloud settings.")
 else:
-    st.success("Let's Go !!!")
+    st.success("柔らかい頭をつくろう。　Let's Go !!!")
 
 # ChatGoogleGenerativeAIを初期化
 llm = ChatGoogleGenerativeAI(model="gemini-pro", temperature=0.7, top_p=0.85)
